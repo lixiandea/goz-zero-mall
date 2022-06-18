@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+package rpc;
+option go_package = "./rpc";
+
+
+
+message LoginRequest {
+  string Mobile = 1;
+  string Password = 2;
+}
+message LoginResponse {
+  int64  ID = 1 ;
+  int64  Gender = 2;
+  string Name = 3;
+  string Mobile = 4 ;
+}
+
+message RegisterRequest {
+  int64   Gender = 1;
+  string Name = 2  ;
+  string Mobile = 3;
+  string Password = 4;
+}
+
+message RegisterResponse {
+  int64  ID = 1  ;
+  int64   Gender = 2;
+  string Name = 3  ;
+  string Mobile = 4;
+}
+
+message UserInfoRequest {
+  int64 ID = 1;
+}
+
+message UserInfoResponse {
+  int64   ID = 1;
+  int64    Gender = 2;
+  string  Name = 3;
+  string  Mobile = 4;
+}
+
+service Rpc {
+  rpc Register(RegisterRequest) returns(RegisterResponse);
+  rpc Login (LoginRequest) returns(LoginResponse);
+  rpc GetUserInfo(UserInfoRequest) returns(UserInfoResponse);
+}

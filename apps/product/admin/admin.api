@@ -1,0 +1,16 @@
+syntax = "v1"
+
+type (
+	UploadImageResponse {
+		Success bool `json:"success"`
+	}
+)
+
+type Response {
+	Message string `json:"message"`
+}
+
+service admin-api {
+	@handler UploadImageHandler
+	post /v1/upload/image () returns (UploadImageResponse)
+}
